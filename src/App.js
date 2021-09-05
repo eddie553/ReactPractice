@@ -2,7 +2,7 @@ import React from "react";
 
 function App() {
   const name = undefined;
-  return name || "값이 undefined입니다";
+  return <div>{name}</div>; //no error, undefined render
 }
 
 export default App;
