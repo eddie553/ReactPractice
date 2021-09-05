@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class EventPractice extends Component {
+  state = { message: "" }; //declaction
   render() {
     return (
       <div>
@@ -9,8 +10,9 @@ class EventPractice extends Component {
           type="text"
           name="message"
           placeholder="아무거나 입력하세요"
+          value={this.state.message}
           onChange={(e) => {
-            console.log(e.target.value);
+            this.setState({ message: e.target.value });
           }}
         />
       </div>
