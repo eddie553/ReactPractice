@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'; //import modules
+import './App.css'; //import css file 
 
-function App() {
+function App() { //make component
   return (
     <div className="App">
       <header className="App-header">

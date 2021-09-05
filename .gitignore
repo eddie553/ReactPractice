@@ -11,6 +11,10 @@
 # production
 /build
 
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+.vscode
+
 # misc
 .DS_Store
 .env.local
