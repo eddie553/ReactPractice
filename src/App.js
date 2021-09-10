@@ -5,7 +5,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ScrollBox></ScrollBox>
+        <ScrollBox ref={(ref) => (this.ScrollBox = ref)} />
+        <button onClick={() => this.ScrollBox.scrollToBottom()} />
       </div>
     );
   }
