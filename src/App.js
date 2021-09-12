@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import Counter from "./Counter";
+import React from "react";
+import Info from "./Info";
 
 const App = () => {
-  const [visible, setVisible] = useState(false);
-  return <Counter />;
+  return <Info />;
 };
 export default App;
