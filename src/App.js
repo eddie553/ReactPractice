@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Info from "./Info";
 
 const App = () => {
