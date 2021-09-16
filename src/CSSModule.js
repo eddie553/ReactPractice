@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames/bind";
-import styles from "./CSSModule.module.css";
+import styles from "./CSSModule.module.scss";
 
 const cx = classNames.bind(styles); // 미리 styles에서 클래스를 받아 오도록 설정하고
 
