@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import ColorContext from "../contexts/color";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 class SelectColors extends Component {
+  static contextType = ColorContext;
   render() {
     return (
       <div>
