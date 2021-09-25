@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Counter from '../components/Counter';
 import { increase, decrease } from '../modules/counter';
 
@@ -14,12 +13,8 @@ export default connect(
   (state) => ({
     number: state.counter.number,
   }),
-  (dispatch) =>
-    bindActionCreators(
-      {
-        increase,
-        decrease,
-      },
-      dispatch,
-    ),
+  {
+    increase,
+    decrease,
+  },
 )(CounterContainer);
