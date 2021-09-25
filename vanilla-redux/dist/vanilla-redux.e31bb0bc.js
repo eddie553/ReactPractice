@@ -978,6 +978,18 @@ var render = function render() {
 
 render();
 store.subscribe(render);
+
+divToggle.onclick = function () {
+  store.dispatch(toggleSwitch());
+};
+
+btnIncrease.onclick = function () {
+  store.dispatch(increase(1));
+};
+
+btnDecrease.onclick = function () {
+  store.dispatch(decrease());
+};
 },{"redux":"node_modules/redux/es/redux.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
