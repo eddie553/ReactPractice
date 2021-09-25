@@ -1,8 +1,10 @@
+import { createAction } from 'redux-actions';
+
 const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
 
-export const increase = () => ({ type: INCREASE });
-export const decrease = () => ({ type: DECREASE });
+export const increase = createAction(INCREASE);
+export const decrease = createAction(DECREASE);
 
 const initialState = {
   number: 0,
