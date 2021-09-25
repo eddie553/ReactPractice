@@ -122,6 +122,9 @@ var divToggle = document.querySelector(".toggle");
 var counter = document.querySelector("h1");
 var btnIncrease = document.querySelector("#increase");
 var btnDecrease = document.querySelector("#decrease");
+var TOGGLE_SWITCH = "TOGGLE_SWITCH";
+var INCREASE = "INCREASE";
+var DECREASE = "DECREASE";
 },{}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
