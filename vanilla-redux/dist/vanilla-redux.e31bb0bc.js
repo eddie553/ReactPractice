@@ -905,7 +905,6 @@ var divToggle = document.querySelector(".toggle");
 var counter = document.querySelector("h1");
 var btnIncrease = document.querySelector("#increase");
 var btnDecrease = document.querySelector("#decrease");
-var store = (0, _redux.createStore)(reducer);
 var TOGGLE_SWITCH = "TOGGLE_SWITCH";
 var INCREASE = "INCREASE";
 var DECREASE = "DECREASE";
@@ -960,6 +959,24 @@ function reducer() {
       return state;
   }
 }
+
+var store = (0, _redux.createStore)(reducer);
+
+var render = function render() {
+  var state = store.getState(); // 현재 상태를 불러옵니다.
+  // 토글 처리
+
+  if (state.toggle) {
+    divToggle.classList.add("active");
+  } else {
+    divToggle.classList.remove("active");
+  } // 카운터 처리
+
+
+  counter.innerText = state.counter;
+};
+
+render();
 },{"redux":"node_modules/redux/es/redux.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
