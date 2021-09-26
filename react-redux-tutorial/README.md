@@ -1,6 +1,6 @@
-### CH17 리덕스를 사용하여 리액트 애플리케이션 상태 관리하기
+# CH17 리덕스를 사용하여 리액트 애플리케이션 상태 관리하기
 
-# 파일 구성
+## 파일 구성
 
 - 초기 상태 및 리듀서함수 /modules
 
@@ -14,4 +14,4 @@
 
 (TodosContainer.js, CounterContainer.js)
 
-# 리덕스의 connect 함수 대신 Hooks 사용 가능
+## 리덕스의 connect 함수 대신 Hooks 사용 가능
