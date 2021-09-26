@@ -1,4 +1,4 @@
-/*const nodeExternals = require("webpack-node-externals");*/
+const nodeExternals = require("webpack-node-externals");
 const paths = require("./paths");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent"); // CSS Module의 고유 className을 만들 때 필요한 옵션
 
@@ -126,5 +126,5 @@ module.exports = {
   resolve: {
     modules: ["node_modules"],
   },
-  /*externals: [nodeExternals()],*/
+  externals: [nodeExternals()],
 };
