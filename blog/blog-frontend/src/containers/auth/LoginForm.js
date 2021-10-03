@@ -42,7 +42,7 @@ const LoginForm = ({ history }) => {
     if (authError) {
       console.log('오류 발생');
       console.log(authError);
-      setError('로그인 실패');
+      setError('로그인 실패'); //에러 처리 추가
       return;
     }
     if (auth) {
@@ -63,7 +63,7 @@ const LoginForm = ({ history }) => {
       form={form}
       onChange={onChange}
       onSubmit={onSubmit}
-      error={error}
+      error={error} //에러 추가
     />
   );
 };
