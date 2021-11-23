@@ -1,21 +1,17 @@
-// 2.4.9 JSX 주석 작성하는 방법
+// 2.5 ESLint , Prettier 도구
 
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
 function App() {
-  const name = "리액트";
+  const name = '리액트';
   return (
-    <>
-      {/* 주석 작성하는 법 */}
-      <div
-        className="react" //시작 태그를 여러줄로 작성하게 된다면 여기에 주석 가능
-      >
-        {name}
-      </div>
-      // 하지만 이런 주석이나 /* 이런 주석은 페이지에 그대로 나타나게 된다. */
-      <input />
-    </>
+    <div>
+      <div className="react">{name}</div>
+      <h1>들여쓰기가 이상한</h1>
+      <h2>코드</h2>
+      <p>입니다.</p>
+    </div>
   );
 }
 
