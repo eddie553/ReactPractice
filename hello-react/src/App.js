@@ -1,25 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
 
-function App() {
+// 2.4.1 감싸인 요소
+// 요소들을 하나의 부모 요소로 감싸주지 않아 오류가 발생하는 코드
+
+function App() { 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+ <h1>리액트 안녕!</h1> 
+ <h2>잘 작동하니?</h2>
+  ) }
