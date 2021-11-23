@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# hello-react 디렉토리는 CH.2부터 CH.7까지의 실습 파일입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CH.2 JSX
 
-## Available Scripts
+## import구문으로 모듈 불러오기
 
-In the project directory, you can run:
+import구문으로 모듈을 불러와서 사용할 수 있음
+브라우저에서 모듈을 불러와 사용하기 위해서 번들러(파일을 묶듯이 연결하는 역할)로 웹팩을 주로 사용
+웹팩의 로더는 파일을 불러오는 역할 (css-loader, babel-loader 등..)
 
-### `yarn start`
+## 2.3 JSX
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+자바스크립트 확장 문법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 보기 쉽고 익숙하다
+- 높은 활용도 (HTML 태그 사용 가능, 컴포넌트도 태그처럼 작성 가능)
 
-### `yarn test`
+## 2.4 JSX 문법
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. 여러 개의 요소는 하나의 부모 요소로 감싸주어야한다. (<div>, <Fragment>,<>)
+2. JSX 내부 자바스크립트 표현식은 {} 로 감싸준다.
+3. JSX 내부 자바스크립트 표현식에서 if 문 사용 불가, 삼항 연산자를 사용한다.
+4. 조건부 렌더링은 && 연산자를 이용
+5. undefined 반환하여 렌더링하지 않는다. (return 부분에서 OR 연산자를 사용하여 오류를 방지하자)
+6. DOM 요소에 스타일을 적용할 때 객체 형태로 넣어준다.
+7. class 대신 className으로 클래스를 지정해준다.
+8. 태그는 꼭 닫는다. (ps. self-closing 태그 ex. <input/>)
+9. JSX 내부에서 주석은 {/\* \*/} 형식으로 작성한다.
 
-### `yarn build`
+## 2.5 ESLint와 Prettier (VSCode extension)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ESLint : 문법 검사 도구
+Prettier : 코드 스타일 자동 정리 도구
