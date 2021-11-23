@@ -1,14 +1,14 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-// 2.4.1 감싸인 요소
-// Fragment 요소로 감싸 오류를 해결한 코드
+// 2.4.2 자바스크립트 표현하기
 
 function App() {
+  const name = "리액트야";
   return (
-    <Fragment>
-      <h1>리액트 안녕!</h1>
-      <h2>잘 작동하니?</h2>{" "}
-    </Fragment>
+    <>
+      <h1> {name} 안녕!</h1>
+      <h2>잘 작동하니?</h2>
+    </>
   );
 }
 
