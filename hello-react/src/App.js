@@ -10,7 +10,7 @@ function App() {
     <>
       {" "}
       <div className="react">{name}</div>
-      <input></input>{" "}
+      <input />{" "}
     </>
   );
 }
