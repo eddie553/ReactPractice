@@ -1,13 +1,9 @@
-// 3.3 isRequired로 필수 props 설정하기
+// 3.4 state 활용하기
 
 import React from 'react';
-import MyComponent from './MyComponent';
+import Counter from './Counter';
 
 const App = () => {
-  return (
-    <MyComponent name="react" favoriteNumber={1}>
-      리액트
-    </MyComponent>
-  );
+  return <Counter />;
 };
 export default App;
