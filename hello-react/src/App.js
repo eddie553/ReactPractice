@@ -1,11 +1,12 @@
-// 3.1 함수형 컴포넌트
-
-import React from 'react';
+// 3.1 클래스형 컴포넌트
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  const name = '리액트';
-  return <div className="react">{name}</div>;
+class App extends Component {
+  render() {
+    const name = 'react';
+    return <div className="react">{name}</div>;
+  }
 }
 
 export default App;
