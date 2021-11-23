@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-const MyComponent = (props) => {
-  const { name, children } = props; // 비구조화 할당
+const MyComponent = ({ name, children }) => {
+  // 비구조화 할당
   return (
     <div>
       안녕하세요, 제 이름은 {name}입니다.
