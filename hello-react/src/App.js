@@ -1,9 +1,9 @@
-// 3.3 props 기본값 설정하기
+// 3.3 children
 
 import React from 'react';
 import MyComponent from './MyComponent';
 
 const App = () => {
-  return <MyComponent />;
+  return <MyComponent>리액트</MyComponent>;
 };
 export default App;
