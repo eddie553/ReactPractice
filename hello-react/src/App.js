@@ -1,9 +1,9 @@
-// 3.4 state 활용하기
+// 3.4 함수형 컴포넌트 state 관리
 
 import React from 'react';
-import Counter from './Counter';
+import Say from './Say';
 
 const App = () => {
-  return <Counter />;
+  return <Say />;
 };
 export default App;
