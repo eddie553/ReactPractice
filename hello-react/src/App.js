@@ -1,12 +1,9 @@
-// 3.1 클래스형 컴포넌트
-import React, { Component } from 'react';
-import './App.css';
+// 3.2 새로운 컴포넌트 MyComponent 만들기
 
-class App extends Component {
-  render() {
-    const name = 'react';
-    return <div className="react">{name}</div>;
-  }
-}
+import React from 'react';
+import MyComponent from './MyComponent';
 
+const App = () => {
+  return <MyComponent />;
+};
 export default App;
