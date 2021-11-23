@@ -1,11 +1,19 @@
-// 2.4.5 undefined 반환시 오류
-// return 반환 시에 OR 연산자로 undefined 반환 방지하기
+// 2.4.6 인라인 스타일링
+// 스타일을 적용할 때는 객체 형태로
 
 import React from "react";
 
 function App() {
-  const name = undefined;
-  return <div>{name || "리액트"}</div>;
+  const name = "리액트";
+  const style = {
+    backgroundColor: "black",
+    color: "aqua",
+    fontSize: "48px",
+    fontWeight: "italic",
+    padding: 16,
+  };
+
+  return <div style={style}>{name}</div>;
 }
 
 export default App;
