@@ -71,14 +71,13 @@
 - ObjectId 검증
   read, remove, update API 에 대하여 ObjectId 검증이 필요.
   미들웨어 만들어 코드 중복을 피하자
-  (src/api/posts/posts.ctrl.js) - checkObjectId 함수
-  (src/api/posts/index.js) - 미들웨어 추가
-
+  checkObjectId 함수(src/api/posts/posts.ctrl.js)
+  미들웨어 추가 - checkObjectId 함수(src/api/posts/index.js)
 - Request Body 검증
   write, update API에서 전달받은 요청 내용을 검증이 필요.
   Joi 라이브러리를 이용
-  (src/api/posts/posts.ctrl.js) - write 검증: schema에서 .required()가 있으면 필수 항목
-  (src/api/posts/posts.ctrl.js) - update 검증 : .required()가 없음
+  - write 검증: schema에서 .required()가 있으면 필수 항목 (src/api/posts/posts.ctrl.js)
+  - update 검증 : .required()가 없음 (src/api/posts/posts.ctrl.js)
 
 ## 22.10 페이지네이션 구현
 
@@ -88,4 +87,137 @@
 - 마지막 페이지 번호 알려주기 - (src/api/posts/posts.ctrl.js) - list API 수정
 - 내용 길이 제한 - (src/api/posts/posts.ctrl.js) - list API 수정
 
-## blog-frontend
+## 23.1 JWT의 이해
+
+- JWT
+
+  - JSON Web Token, JSON으로 이루어져 있는 토큰.
+
+  * 두 개체가 서로 안전하게 정보를 주고 받을 수 있도록 웹 표준으로 정의된 기술.
+
+- 토큰 기반 인증 시스템
+  토큰 : 로그인 이후 서버가 만들어 주는 문자열. (로그인 정보, 해당 정보가 서버에서 발급되었음을 증명하는 서명이 들어있음)
+  _ 무결성(정보가 변경되거나 위조되지 않았음) 보장
+  _ API 요청 시 발급받은 토큰과 함께 요청.
+  _ 서버는 토큰을 발급하고 토큰의 유효성 검사 후 작업 처리
+  _ 사용자가 토큰을 가지고 있어 서버의 확장성이 높다.
+
+## JWT를 통한 회원 인증 시스템 구현하기
+
+1. User 스키마 /모델 만들기
+
+   - 사용자의 정보를 MongoDB에 담기. bcrypt 단방향 해싱 함수 라이브러리 사용
+   - 스키마 작성 (src/models/user.js)
+   - 인스턴스 메서드 : setPassword(hashedPassword 설정), checkPassword(비밀번호 일치 검증) - (src/models/user.js)
+   - 스태틱 메서드 findByUsername(username으로 데이터 찾기) -(src/models/user.js)
+
+2. 회원 인증 API 만들기
+
+   - 회원 인증 API register, login, check, logout 만들기 -(src/api/auth/auth.ctrl.js) -
+   - auth 라우터 생성 후 api 라우터에 적용- (src/api/auth/index.js)
+
+3. 토큰 발급 및 검증하기
+
+   - 비밀키 설정하기 - jsonwebtoken 모듈 이용
+   - generateToken 인스턴스 메서드 : 토큰 발급하기-(src/models/user.js) -
+   - 토큰을 확인 후 검증하는 미들웨어 - app에 router 미들웨어 적용 전.-(src/lib/jwtMiddleware.js) -
+   - 로그인 확인하기 check 함수 -(src/api/auth/auth.ctrl.js)
+   - 토큰 재발급하기 -(src/lib/jwtMiddleware.js)
+
+4. posts API에 회원 인증 시스템 도입하기 : 로그인해야만 작성, 삭제와 수정은 작성자만
+
+   - 스키마 수정하기 (id, username)
+   - 로그인했을 때만 API 사용할 수 있게 하기 : checkLoggedIn 미들웨어 (src/lib/checkLoggedIn.js)
+   - 포스트 작성 시 사용자 정보 넣기 : write 함수 수정 user: ctx.state.user (src/api/posts/posts.ctrl.js)
+   - 포스트 수정 및 삭제 시 권한 확인하기 : getPostById - 미들웨어에서 id로 포스트 찾은 후 ctx.state 에 담아주기 (src/api/posts/posts.ctrl.js)
+   - 로그인 중인 사용자가 작성한 포스트인지 확인 -checkOwnPost (src/api/posts/posts.ctrl.js)
+   - 미들웨어 등록
+
+5. username/tags로 포스트 필터링하기
+   - tag, username을 ctx.query에서 비구조화할당하여 값이 유효하면 넣는다. -(src/api/posts/posts.ctrl.js) list 함수 수정
+
+## CH.24 프런트엔드 프로젝트 : 시작 및 회원 인증 구현
+
+## 24.1 라우터 적용
+
+- LoginPage.js - 로그인
+- RegisterPage.sj - 회원가입
+- WritePage.js - 글쓰기
+- PostPage.js - 포스트 읽기
+- PostListPage.js - 포스트 목록
+
+## 24.1 리덕스 적용(리덕스 스토어 생성, 적용만)
+
+## 24.2 회원가입과 로그인 구현
+
+1. UI
+   - AuthTemplate.js : children으로 받아온 내용만 보여주는 역할.
+   - AuthForm.js : 회원가입 또는 로그인 폼을 보여줌
+2. 리덕스로 폼 상태 관리하기
+   - 회원가입과 로그인 폼의 상태 관리 - (modules/auth.js)
+   - 컨테이너 컴포넌트 : useDispatch, useSelector 함수를 사용하여 컴포넌트와 리덕스를 연경시킨다. - (/containers/auth)
+3. API 연동하기
+   - axios 사용
+4. 회원가입 구현
+5. 로그인 구현
+6. 회원 인증 에러 처리하기
+7. 로그인 상태 보여주고 유지하기 - 로그인 검증 실패시 정보 초기화
+8. 로그아웃 기능 구현
+
+## CH.25 프런트엔드 프로젝트 : 글쓰기 기능 구현하기
+
+1. UI 구현
+   - quill 라이브러리 사용
+2. 에디터 하단 UI 구현
+3. 리덕스로 글쓰기 상태 관리하기
+
+   - write 리덕스 모듈 작성하기 (modules/write.js) 후
+   - EditorContainer : title 값과 body값을 리덕스 스토어에서 불러와 Editor 컴포넌트에 전달 -(containers/write/EditorContainer.js)
+   - TagBoxContainer : TagBox를 위한 컨테이너 - (containers/write/TabBoxContainer.js)
+   - TagBox 컴포넌트: 전달받은 props인 onChnageTags,tags 를 사용해 이벤트 설정 -(components/write/TagBox.js)
+
+4. API 연동하기
+
+   - 글쓰기 API 연동하기 - 포스트에 관련된 API를 요청하기 -(lib/api/posts.js)
+   - posts.js에 있는 함수 호출하는 리덕스 액션과 사가 - (modules/write.js )
+   - 포스트 등록 버튼을 누르면 현재 리덕스 스토어 안에 들어 있는 값을 사용하여 새 포스트 작성, 취소 버튼 : 뒤로가기 구현 - (containers/write/WriteActionButtonsContainer.js)
+
+## CH.26 프런트엔드 프로젝트 : 포스트 읽기 페이지 구현하기
+
+1. 포스트 읽기 UI 준비하기
+2. 포스트 읽기 API 연동하기
+3. 포스트 목록 UI 준비하기
+4. 포스트 목록 API 연동하기
+   ----- 위 과정은 CH.25 와 유사함----
+5. HTML 필터링하기
+
+   - sanitize-html 라이브러리 이용
+   - 길이 제한하기 - list 함수 수정 (src/api/posts/posts.ctrl.js)
+   - sanitizeOptions 객체로 HTML 필터링할 때 허용할 태그들을 설정 가능. -> write 함수, update 함수 수정 (src/api/posts/posts.ctrl.js)
+
+6. 페이지네이션 구현하기
+   - 액션 안에 meta 값을 response로 넣어주어 HTTP 헤더 및 상태 코드 조회하기 - (lib/createRequestSaga.js)
+   - lastPage 리덕스 스토어에 저장하기 - (modules/posts.js)
+   - 페이지네이션 구현하기 / 페이지에 따라 버튼 활성화, 다음 페이지 이동 경로 지정 - (components/posts/Pagination.js)
+   - 비활성화 버튼 컴포넌트 스타일 지정 후 페이지네이션 컨테이너 수정 후 렌더링
+
+## CH.27 프런트엔드 프로젝트 : 수정/삭제 기능 구현 및 마무리
+
+1. 포스트 수정 기능 구현하기
+   - PostActionButtons 컴포넌트 : 포스트 작성자에게만 수정, 삭제 버튼 렌더링하기 -(components/post/PostActionButtons.js)
+   - actionButtons를 props로 받아오기 - (components/post/PostViewer.js)
+   - 컨테이너에서 PostActionButtons 받아와 렌더링하기
+   - 수정 버튼 클릭 시 글쓰기 페이지로 이동하기 - 현재보고있는 포스트 정보를 write 모듈에서 관리하는 상태에 넣는 액션 만들기 -(modules/write.js)
+   - 컨테이너 수정 PostActionButtons 조건부 렌더링 설정하기
+   - PostActionButtons 컴포넌트에 onEdit 이벤트 전달해주기
+   - write 상태에 originalPostId 주어졌을 때, 수정 API 사용 기능 - write 리덕스 모듈에서 액션과 사가 생성
+   - write 버튼 컴포넌트 write.originalPostId존재하면 updatePost 액션 생성 함수를 사용 - (containers/write/WriteActionButtonsContainer.js)
+2. 포스트 삭제 기능 구현하기
+   - AskModal 컴포넌트 생성 (확인창) -(components/common/AskModal.js),(components/post/AskRemoveModal.js)
+   - PostActionButtons 에서 모달 사용하기 - 리덕스 액션과 사가 생략하고 바로 API 사용 - removePost 함수를 구현한뒤(lib/api/posts.js) 사용 (containers/post/PostViewerContainer.js)
+3. react-helmet-async로 meta 태그 설정하기
+
+   - react-helmet-async 라이브러리 사용
+
+4. 프로젝트 마무리하기
+   - koa-static으로 정적 파일 제공하기
