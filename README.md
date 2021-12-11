@@ -146,7 +146,7 @@ DOM을 꼭 직접적으로 건드려야 할 때 ref를 사용한다. + 특정 in
 
 ## 5.3 컴포넌트에 ref 달기
 
-<pre><code><MyComponet ref={(ref)=>{this.ref}}/></code></pre>
+<pre><code><MyComponet ref={(ref)\=>{this.ref}}/></code></pre>
 
 컴포넌트에 ref를 달고, 내부메서드를 사용.
 
