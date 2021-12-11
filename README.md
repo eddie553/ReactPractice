@@ -18,14 +18,14 @@
 ## 13.2 리액트 라우터 프로젝트
 
 - Route 컴포넌트
-<pre><code><Route path = "주소규칙" component= {보여줄컴포넌트} exact={true}/> </pre></code>
+<Route path = "주소규칙" component= {보여줄컴포넌트} exact={true}/>
 
 - Link 컴포넌트
   - 클릭하면 다른 주소로 이동시켜 주는 컴포넌트
   - 애플리케이션은 그대로 유지한 상태에서 HTML5 History API를 사용하여 페이지의 주소만 변경.
 
-<pre><code> <Link to="주소"> 내용 </Link> </pre></code>
-
+<Link to="주소"> 내용 
+  
 - URL parameter
 
   - 특정 아이디 혹은 이름을 사용하여 조회할 때 사용
